@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Virtual environment
+.venv/
+
+# uv
+# uv.lock is intentionally tracked for reproducibility
+
+# Type checking
+.mypy_cache/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Linting
+.ruff_cache/
+
+# Environment variables
+.env
+.env.*
+
+# Generated experiment output
+output/
+
+# IDE
+.idea/
+.vscode/
+*.swp

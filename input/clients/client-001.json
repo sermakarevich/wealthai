@@ -1,0 +1,71 @@
+{
+  "id": "client-001",
+  "personal_details": {
+    "first_name": "James",
+    "last_name": "Whitfield",
+    "date_of_birth": "1985-03-22",
+    "email": "james.whitfield@email.co.uk",
+    "phone": "07700 112233",
+    "address": {
+      "address_line_1": "14 Elm Grove",
+      "address_line_2": "",
+      "city": "Bristol",
+      "postcode": "BS7 8TH",
+      "country": "United Kingdom"
+    }
+  },
+  "assets": [
+    {
+      "id": "asset-001",
+      "type": "pension",
+      "name": "Workplace Pension",
+      "value": 87000,
+      "currency": "GBP",
+      "provider": "Scottish Widows"
+    },
+    {
+      "id": "asset-002",
+      "type": "savings",
+      "name": "Emergency Fund",
+      "value": 12000,
+      "currency": "GBP",
+      "provider": "Marcus by Goldman Sachs"
+    }
+  ],
+  "liabilities": [
+    {
+      "id": "liability-001",
+      "type": "mortgage",
+      "provider": "Nationwide",
+      "outstanding_balance": 195000,
+      "currency": "GBP",
+      "interest_rate_percent": 2.49,
+      "end_date": "2036-09-01"
+    }
+  ],
+  "income_items": [
+    {
+      "id": "income-001",
+      "source": "employment",
+      "amount": 52000,
+      "currency": "GBP",
+      "frequency": "annually"
+    }
+  ],
+  "expense_items": [
+    {
+      "id": "expense-001",
+      "category": "mortgage_payment",
+      "amount": 870,
+      "currency": "GBP",
+      "frequency": "monthly"
+    },
+    {
+      "id": "expense-002",
+      "category": "childcare",
+      "amount": 600,
+      "currency": "GBP",
+      "frequency": "monthly"
+    }
+  ]
+}
