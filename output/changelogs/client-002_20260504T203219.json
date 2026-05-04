@@ -1,0 +1,83 @@
+{
+  "create": {
+    "assets": [],
+    "liabilities": [],
+    "income_items": [],
+    "expense_items": [
+      {
+        "category": "private_health_insurance",
+        "amount": 68.0,
+        "currency": "GBP",
+        "frequency": "monthly",
+        "evidence": "I started paying into a private health insurance plan with Bupa. It's sixty-eight pounds a month"
+      }
+    ]
+  },
+  "update": {
+    "personal_details": [
+      {
+        "field": "email",
+        "old_value": "margaret.chen@btinternet.com",
+        "new_value": "margaret.chen@gmail.com",
+        "evidence": "I changed my email to margaret.chen@gmail.com."
+      }
+    ],
+    "assets": [
+      {
+        "id": "asset-002",
+        "field": "provider",
+        "old_value": "Standard Life",
+        "new_value": "Fidelity",
+        "evidence": "I moved it to Fidelity back in September."
+      },
+      {
+        "id": "asset-002",
+        "field": "value",
+        "old_value": 45000.0,
+        "new_value": 49000.0,
+        "evidence": "it's sitting at around forty-nine thousand now."
+      },
+      {
+        "id": "asset-003",
+        "field": "value",
+        "old_value": 22000.0,
+        "new_value": 26000.0,
+        "evidence": "it's up to twenty-six thousand now."
+      },
+      {
+        "id": "asset-004",
+        "field": "value",
+        "old_value": 38000.0,
+        "new_value": 41500.0,
+        "evidence": "it's at about forty-one thousand five hundred."
+      }
+    ],
+    "liabilities": [
+      {
+        "id": "liability-002",
+        "field": "outstanding_balance",
+        "old_value": 3200.0,
+        "new_value": 0.0,
+        "evidence": "I paid off the Barclaycard completely in October."
+      }
+    ],
+    "income_items": [
+      {
+        "id": "income-001",
+        "field": "amount",
+        "old_value": 48500.0,
+        "new_value": 38800.0,
+        "evidence": "it's now thirty-eight thousand eight hundred."
+      }
+    ],
+    "expense_items": [
+      {
+        "id": "expense-002",
+        "field": "amount",
+        "old_value": 150.0,
+        "new_value": 0.0,
+        "evidence": "no more monthly payments on that."
+      }
+    ]
+  }
+}
