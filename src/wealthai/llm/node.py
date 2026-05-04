@@ -61,7 +61,8 @@ async def generate_changelog(state: AgentState) -> dict[str, Any]:
     prompt_path = _PROMPTS_DIR / _PROMPT_TEMPLATE.format(version=state.prompt_version)
     template = prompt_path.read_text()
     profile_json = json.dumps(state.client_profile.model_dump(mode="json"), indent=2)
-    system_prompt = template.format(profile_json=profile_json)
+    schema_json = json.dumps(ChangeLog.model_json_schema(), indent=2)
+    system_prompt = template.format(profile_json=profile_json, schema_json=schema_json)
 
     changelog = await _invoke_llm(system_prompt, state.transcript, state.client_profile)
     return {"changelog": changelog}

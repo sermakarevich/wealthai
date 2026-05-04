@@ -43,97 +43,10 @@ Do not produce update items for records the client confirms are unchanged.
 
 ## Output format
 
-Return a single JSON object with exactly this structure. Do not add any fields not shown here. IDs for new records are assigned automatically — do not include `id` in create items.
+Return a single JSON object conforming exactly to this schema. Do not add any fields not defined here. IDs for new records are assigned automatically — do not include `id` in create items.
 
 ```json
-{{
-  "create": {{
-    "assets": [
-      {{
-        "type": "<savings|pension|investment|property|other>",
-        "name": "<descriptive name>",
-        "value": 0.0,
-        "currency": "GBP",
-        "provider": "<provider name>",
-        "evidence": "<verbatim quote>"
-      }}
-    ],
-    "liabilities": [
-      {{
-        "type": "<mortgage|loan|credit_card|other>",
-        "provider": "<provider name>",
-        "outstanding_balance": 0.0,
-        "currency": "GBP",
-        "interest_rate_percent": null,
-        "evidence": "<verbatim quote>"
-      }}
-    ],
-    "income_items": [
-      {{
-        "source": "<employer or source>",
-        "amount": 0.0,
-        "currency": "GBP",
-        "frequency": "<weekly|monthly|annually>",
-        "evidence": "<verbatim quote>"
-      }}
-    ],
-    "expense_items": [
-      {{
-        "category": "<category>",
-        "amount": 0.0,
-        "currency": "GBP",
-        "frequency": "<weekly|monthly|annually>",
-        "evidence": "<verbatim quote>"
-      }}
-    ]
-  }},
-  "update": {{
-    "personal_details": [
-      {{
-        "field": "<dot-notation path, e.g. address.postcode or email>",
-        "old_value": "<current value from profile>",
-        "new_value": "<new value from transcript>",
-        "evidence": "<verbatim quote>"
-      }}
-    ],
-    "assets": [
-      {{
-        "id": "<exact id from profile, e.g. asset-001>",
-        "field": "<field name, e.g. value>",
-        "old_value": "<current value>",
-        "new_value": "<new value>",
-        "evidence": "<verbatim quote>"
-      }}
-    ],
-    "liabilities": [
-      {{
-        "id": "<exact id from profile, e.g. liability-001>",
-        "field": "<field name>",
-        "old_value": "<current value>",
-        "new_value": "<new value>",
-        "evidence": "<verbatim quote>"
-      }}
-    ],
-    "income_items": [
-      {{
-        "id": "<exact id from profile, e.g. income-001>",
-        "field": "<field name>",
-        "old_value": "<current value>",
-        "new_value": "<new value>",
-        "evidence": "<verbatim quote>"
-      }}
-    ],
-    "expense_items": [
-      {{
-        "id": "<exact id from profile, e.g. expense-001>",
-        "field": "<field name>",
-        "old_value": "<current value>",
-        "new_value": "<new value>",
-        "evidence": "<verbatim quote>"
-      }}
-    ]
-  }}
-}}
+{schema_json}
 ```
 
 Omit any array that has no entries. All monetary values must be numbers, not strings. Dates must use ISO 8601 format (YYYY-MM-DD).

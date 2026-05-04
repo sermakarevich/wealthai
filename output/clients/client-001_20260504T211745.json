@@ -1,0 +1,122 @@
+{
+  "id": "client-001",
+  "personal_details": {
+    "first_name": "James",
+    "last_name": "Whitfield",
+    "date_of_birth": "1985-03-22",
+    "email": "james.whitfield@email.co.uk",
+    "phone": "07700 112233",
+    "address": {
+      "address_line_1": "14 Elm Grove",
+      "address_line_2": "",
+      "city": "Bristol",
+      "postcode": "BS7 8TH",
+      "country": "United Kingdom"
+    }
+  },
+  "assets": [
+    {
+      "id": "asset-001",
+      "type": "pension",
+      "name": "Workplace Pension",
+      "value": 87000.0,
+      "currency": "GBP",
+      "provider": "Scottish Widows"
+    },
+    {
+      "id": "asset-002",
+      "type": "savings",
+      "name": "Emergency Fund",
+      "value": 8000.0,
+      "currency": "GBP",
+      "provider": "Marcus by Goldman Sachs"
+    },
+    {
+      "id": "asset-003",
+      "type": "pension",
+      "name": "Dyson Auto-Enrolment Pension",
+      "value": 2000.0,
+      "currency": "GBP",
+      "provider": "Aviva"
+    },
+    {
+      "id": "asset-004",
+      "type": "investment",
+      "name": "Vanguard Stocks and Shares ISA",
+      "value": 3000.0,
+      "currency": "GBP",
+      "provider": "Vanguard"
+    }
+  ],
+  "liabilities": [
+    {
+      "id": "liability-001",
+      "type": "mortgage",
+      "provider": "Nationwide",
+      "outstanding_balance": 0.0,
+      "currency": "GBP",
+      "interest_rate_percent": 2.49,
+      "end_date": "2036-09-01",
+      "limit": null
+    },
+    {
+      "id": "liability-002",
+      "type": "mortgage",
+      "provider": "Halifax",
+      "outstanding_balance": 275000.0,
+      "currency": "GBP",
+      "interest_rate_percent": 4.19,
+      "end_date": null,
+      "limit": null
+    },
+    {
+      "id": "liability-003",
+      "type": "loan",
+      "provider": "Tesco Bank",
+      "outstanding_balance": 15000.0,
+      "currency": "GBP",
+      "interest_rate_percent": 6.9,
+      "end_date": null,
+      "limit": null
+    }
+  ],
+  "income_items": [
+    {
+      "id": "income-001",
+      "source": "employment",
+      "amount": 68000.0,
+      "currency": "GBP",
+      "frequency": "annually"
+    }
+  ],
+  "expense_items": [
+    {
+      "id": "expense-001",
+      "category": "mortgage_payment",
+      "amount": 1420.0,
+      "currency": "GBP",
+      "frequency": "monthly"
+    },
+    {
+      "id": "expense-002",
+      "category": "after_school_club",
+      "amount": 200.0,
+      "currency": "GBP",
+      "frequency": "monthly"
+    },
+    {
+      "id": "expense-003",
+      "category": "mortgage_payment",
+      "amount": 1420.0,
+      "currency": "GBP",
+      "frequency": "monthly"
+    },
+    {
+      "id": "expense-004",
+      "category": "loan_repayment",
+      "amount": 290.0,
+      "currency": "GBP",
+      "frequency": "monthly"
+    }
+  ]
+}
