@@ -71,4 +71,4 @@ input/
 
 - **Read-only inputs:** The original client profile in `input/clients/` is never modified. Each run writes a new versioned snapshot to `output/clients/`, making it safe to run multiple experiments without corrupting the baseline.
 - **Initial profile assumed pre-existing:** The first client profile is expected to already exist in `input/clients/`. Creating a profile from scratch is out of scope — the `ChangeLog` schema is designed for *incremental updates*, not initial population, so first-time onboarding should be handled by a separate flow.
-- **Local model accuracy ceiling:** Results produced by a local Ollama model will fall meaningfully short of a cloud API model (e.g. Claude Sonnet/GPT-4o). Treat eval scores obtained with Ollama as a lower bound; production quality requires a frontier model.
+- **Local model accuracy ceiling:** Results produced by a local Ollama model will fall meaningfully short of a cloud API model (e.g. Claude Sonnet/GPT). Treat eval scores obtained with Ollama as a lower bound and a codebase test; production quality requires a frontier model.
