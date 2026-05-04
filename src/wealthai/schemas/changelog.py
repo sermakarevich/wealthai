@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from wealthai.schemas.common import Frequency
 
@@ -82,6 +82,13 @@ class UpdateSet(BaseModel):
     liabilities: list[RecordUpdate] = Field(default_factory=list)
     income_items: list[RecordUpdate] = Field(default_factory=list)
     expense_items: list[RecordUpdate] = Field(default_factory=list)
+
+    @field_validator("assets", "liabilities", "income_items", "expense_items", mode="before")
+    @classmethod
+    def require_id(cls, items: Any) -> Any:
+        if not isinstance(items, list):
+            return items
+        return [item for item in items if not isinstance(item, dict) or item.get("id")]
 
 
 # ---------------------------------------------------------------------------

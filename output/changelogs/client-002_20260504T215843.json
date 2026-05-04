@@ -1,0 +1,116 @@
+{
+  "create": {
+    "assets": [
+      {
+        "type": "pension",
+        "name": "Private Pension",
+        "value": 49000.0,
+        "currency": "GBP",
+        "provider": "Fidelity",
+        "evidence": "But the Standard Life one — I moved it to Fidelity back in September. [...] it's sitting at around forty-nine thousand now."
+      }
+    ],
+    "liabilities": [
+      {
+        "type": "credit_card",
+        "provider": "None",
+        "outstanding_balance": 0.0,
+        "currency": "GBP",
+        "interest_rate_percent": null,
+        "evidence": "I paid off the Barclaycard completely in October. Used some of the savings to clear it. So that's gone now, no more monthly payments on that."
+      }
+    ],
+    "income_items": [
+      {
+        "source": "employment",
+        "amount": 38800.0,
+        "currency": "GBP",
+        "frequency": "annually",
+        "evidence": "So my salary has gone down — it's now thirty-eight thousand eight hundred."
+      }
+    ],
+    "expense_items": [
+      {
+        "category": "private_health_insurance",
+        "amount": 68.0,
+        "currency": "GBP",
+        "frequency": "monthly",
+        "evidence": "I started paying into a private health insurance plan with Bupa. It's sixty-eight pounds a month"
+      }
+    ]
+  },
+  "update": {
+    "personal_details": [
+      {
+        "field": "email",
+        "old_value": "margaret.chen@btinternet.com",
+        "new_value": "margaret.chen@gmail.com",
+        "evidence": "Oh and I should mention, I changed my email to margaret.chen@gmail.com. The BT one was getting too much spam."
+      }
+    ],
+    "assets": [
+      {
+        "id": "asset-002",
+        "field": "provider",
+        "old_value": "Standard Life",
+        "new_value": "Fidelity",
+        "evidence": "But the Standard Life one — I moved it to Fidelity back in September."
+      },
+      {
+        "id": "asset-002",
+        "field": "value",
+        "old_value": 45000.0,
+        "new_value": 49000.0,
+        "evidence": "The transfer went through at about forty-seven thousand and it's sitting at around forty-nine thousand now."
+      },
+      {
+        "id": "asset-003",
+        "field": "value",
+        "old_value": 22000.0,
+        "new_value": 26000.0,
+        "evidence": "The Cash ISA I've been adding to — it's up to twenty-six thousand now."
+      },
+      {
+        "id": "asset-004",
+        "field": "value",
+        "old_value": 38000.0,
+        "new_value": 41500.0,
+        "evidence": "The Hargreaves one has done well too, it's at about forty-one thousand five hundred."
+      }
+    ],
+    "liabilities": [
+      {
+        "id": "liability-002",
+        "field": "outstanding_balance",
+        "old_value": 3200.0,
+        "new_value": 0.0,
+        "evidence": "I paid off the Barclaycard completely in October. Used some of the savings to clear it. So that's gone now, no more monthly payments on that."
+      },
+      {
+        "id": "liability-002",
+        "field": "provider",
+        "old_value": "Barclaycard",
+        "new_value": "None",
+        "evidence": "I paid off the Barclaycard completely in October. Used some of the savings to clear it."
+      }
+    ],
+    "income_items": [
+      {
+        "id": "income-001",
+        "field": "amount",
+        "old_value": 48500.0,
+        "new_value": 38800.0,
+        "evidence": "So my salary has gone down — it's now thirty-eight thousand eight hundred."
+      }
+    ],
+    "expense_items": [
+      {
+        "id": "expense-002",
+        "field": "amount",
+        "old_value": 150.0,
+        "new_value": 0.0,
+        "evidence": "I paid off the Barclaycard completely in October. Used some of the savings to clear it. So that's gone now, no more monthly payments on that."
+      }
+    ]
+  }
+}

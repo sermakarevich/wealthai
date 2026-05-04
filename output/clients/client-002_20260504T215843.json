@@ -1,0 +1,137 @@
+{
+  "id": "client-002",
+  "personal_details": {
+    "first_name": "Margaret",
+    "last_name": "Chen",
+    "date_of_birth": "1962-11-08",
+    "email": "margaret.chen@gmail.com",
+    "phone": "07412 339821",
+    "address": {
+      "address_line_1": "7 Willow Lane",
+      "address_line_2": "Headingley",
+      "city": "Leeds",
+      "postcode": "LS6 3PA",
+      "country": "United Kingdom"
+    }
+  },
+  "assets": [
+    {
+      "id": "asset-001",
+      "type": "pension",
+      "name": "NHS Pension",
+      "value": 310000.0,
+      "currency": "GBP",
+      "provider": "NHS Pensions"
+    },
+    {
+      "id": "asset-002",
+      "type": "pension",
+      "name": "Private Pension",
+      "value": 49000.0,
+      "currency": "GBP",
+      "provider": "Fidelity"
+    },
+    {
+      "id": "asset-003",
+      "type": "savings",
+      "name": "Cash ISA",
+      "value": 26000.0,
+      "currency": "GBP",
+      "provider": "Nationwide"
+    },
+    {
+      "id": "asset-004",
+      "type": "investment",
+      "name": "Stocks and Shares ISA",
+      "value": 41500.0,
+      "currency": "GBP",
+      "provider": "Hargreaves Lansdown"
+    },
+    {
+      "id": "asset-005",
+      "type": "pension",
+      "name": "Private Pension",
+      "value": 49000.0,
+      "currency": "GBP",
+      "provider": "Fidelity"
+    }
+  ],
+  "liabilities": [
+    {
+      "id": "liability-001",
+      "type": "mortgage",
+      "provider": "HSBC",
+      "outstanding_balance": 64000.0,
+      "currency": "GBP",
+      "interest_rate_percent": 3.29,
+      "end_date": "2031-04-01",
+      "limit": null
+    },
+    {
+      "id": "liability-002",
+      "type": "credit_card",
+      "provider": "None",
+      "outstanding_balance": 0.0,
+      "currency": "GBP",
+      "interest_rate_percent": 21.9,
+      "end_date": null,
+      "limit": 5000.0
+    },
+    {
+      "id": "liability-003",
+      "type": "credit_card",
+      "provider": "None",
+      "outstanding_balance": 0.0,
+      "currency": "GBP",
+      "interest_rate_percent": null,
+      "end_date": null,
+      "limit": null
+    }
+  ],
+  "income_items": [
+    {
+      "id": "income-001",
+      "source": "employment",
+      "amount": 38800.0,
+      "currency": "GBP",
+      "frequency": "annually"
+    },
+    {
+      "id": "income-002",
+      "source": "employment",
+      "amount": 38800.0,
+      "currency": "GBP",
+      "frequency": "annually"
+    }
+  ],
+  "expense_items": [
+    {
+      "id": "expense-001",
+      "category": "mortgage_payment",
+      "amount": 520.0,
+      "currency": "GBP",
+      "frequency": "monthly"
+    },
+    {
+      "id": "expense-002",
+      "category": "credit_card_payment",
+      "amount": 0.0,
+      "currency": "GBP",
+      "frequency": "monthly"
+    },
+    {
+      "id": "expense-003",
+      "category": "utilities",
+      "amount": 210.0,
+      "currency": "GBP",
+      "frequency": "monthly"
+    },
+    {
+      "id": "expense-004",
+      "category": "private_health_insurance",
+      "amount": 68.0,
+      "currency": "GBP",
+      "frequency": "monthly"
+    }
+  ]
+}

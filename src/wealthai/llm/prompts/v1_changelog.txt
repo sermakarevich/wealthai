@@ -22,7 +22,10 @@ For each change produce either:
 Every create and update item must include an `evidence` field containing a verbatim quote from the transcript that supports the change. Do not paraphrase — copy the exact words the client or adviser used.
 
 **Updates reference existing IDs.**
-When updating an existing record use the exact `id` shown in the profile above (e.g. `asset-001`, `liability-002`). One update item per changed field.
+When updating an existing record use the exact `id` shown in the profile above (e.g. `asset-001`, `liability-002`). One update item per changed field. The `id` field is mandatory — never emit an update item for assets, liabilities, income_items, or expense_items without it.
+
+**Address sub-fields use dot notation.**
+Never set `field` to `"address"`. Always update individual address sub-fields using dot notation, e.g. `"address.address_line_1"`, `"address.postcode"`. Produce one update item per changed sub-field.
 
 **There is no delete operation.**
 If the client says something no longer exists, apply the following rules instead:

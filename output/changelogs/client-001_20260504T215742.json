@@ -1,0 +1,116 @@
+{
+  "create": {
+    "assets": [
+      {
+        "type": "pension",
+        "name": "Dyson Pension Scheme",
+        "value": 2000.0,
+        "currency": "GBP",
+        "provider": "Aviva",
+        "evidence": "But Dyson auto-enrolled me into their scheme with Aviva. I've been contributing for about three months now, so there's probably around two thousand in there so far."
+      },
+      {
+        "type": "savings",
+        "name": "Vanguard stocks and shares ISA",
+        "value": 3000.0,
+        "currency": "GBP",
+        "provider": "Vanguard",
+        "evidence": "I'm also paying into a Vanguard stocks and shares ISA — I set it up in September, putting in five hundred a month. It's worth about three thousand at the moment."
+      }
+    ],
+    "liabilities": [
+      {
+        "type": "mortgage",
+        "provider": "Halifax",
+        "outstanding_balance": 275000.0,
+        "currency": "GBP",
+        "interest_rate_percent": null,
+        "evidence": "We sold the old place and got a new mortgage with Halifax. The outstanding balance is two hundred and seventy-five thousand"
+      },
+      {
+        "type": "loan",
+        "provider": "Tesco Bank",
+        "outstanding_balance": 15000.0,
+        "currency": "GBP",
+        "interest_rate_percent": null,
+        "evidence": "Yeah, we took out a home improvement loan with Tesco Bank — fifteen thousand over five years at six point nine percent. Repayments are about two hundred and ninety a month."
+      }
+    ],
+    "income_items": [
+      {
+        "source": "employment",
+        "amount": 68000.0,
+        "currency": "GBP",
+        "frequency": "annually",
+        "evidence": "I've joined Dyson as a Senior Engineering Manager. The salary is sixty-eight thousand a year"
+      }
+    ],
+    "expense_items": [
+      {
+        "category": "childcare",
+        "amount": 200.0,
+        "currency": "GBP",
+        "frequency": "monthly",
+        "evidence": "We're only paying for the after-school club now, about two hundred a month."
+      }
+    ]
+  },
+  "update": {
+    "personal_details": [
+      {
+        "field": "address.address_line_1",
+        "old_value": "14 Elm Grove",
+        "new_value": "28 Oakfield Road",
+        "evidence": "We moved house back in November — we're now at 28 Oakfield Road in Clifton"
+      },
+      {
+        "field": "address.city",
+        "old_value": "Bristol",
+        "new_value": "Bristol",
+        "evidence": "We moved house back in November — we're now at 28 Oakfield Road in Clifton, still Bristol"
+      },
+      {
+        "field": "address.postcode",
+        "old_value": "BS7 8TH",
+        "new_value": "BS8 4AL",
+        "evidence": "we're now at 28 Oakfield Road in Clifton, still Bristol, postcode BS8 4AL."
+      }
+    ],
+    "assets": [
+      {
+        "id": "asset-002",
+        "field": "value",
+        "old_value": 12000.0,
+        "new_value": 8000.0,
+        "evidence": "It's sitting at around eight thousand now."
+      }
+    ],
+    "liabilities": [
+      {
+        "id": "liability-001",
+        "field": "outstanding_balance",
+        "old_value": 195000.0,
+        "new_value": 0.0,
+        "evidence": "We sold the old place and got a new mortgage with Halifax."
+      }
+    ],
+    "income_items": [
+      {
+        "id": "income-001",
+        "field": "amount",
+        "old_value": 52000.0,
+        "new_value": 68000.0,
+        "evidence": "I've joined Dyson as a Senior Engineering Manager. The salary is sixty-eight thousand a year, so a nice bump from what I was on before."
+      }
+    ],
+    "expense_items": [
+      {
+        "id": "expense-002",
+        "field": "amount",
+        "old_value": 600.0,
+        "new_value": 200.0,
+        "evidence": "We're only paying for the after-school club now, about two hundred a month."
+      }
+    ]
+  }
+}

@@ -1,6 +1,8 @@
 MODEL = "gemma4:latest"
 # MODEL = "qwen3.6:latest"
 
+PROMPT_VERSION = "v1"
+
 LLM_RETRY_ATTEMPTS = 3
 LLM_RETRY_MIN_WAIT = 1
 LLM_RETRY_MAX_WAIT = 60
