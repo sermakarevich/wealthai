@@ -36,13 +36,9 @@ Output files are written to `output/` with a datetime suffix:
 src/wealthai/
   schemas/        Pydantic models: ClientProfile, ChangeLog, Asset, Liability, ...
   llm/
-    node.py       LangChain/Ollama node: prompts the LLM, retries, validates output
+    node.py       Prompts the LLM, validates output, retries on failure
     merger.py     Applies a ChangeLog to a ClientProfile (pure, deterministic)
-    validators/   Post-LLM sanity checks run before the changelog is applied.
-                  `update_ids` rejects updates that reference IDs absent from the profile;
-                  `create_sequence` checks that existing profile IDs form a gap-free sequence
-                  so the merger can safely assign the next ID to each new record.
-                  Validation failures trigger a retry via tenacity.
+    validators/   Post-LLM validators (see How it works)
     prompts/      Versioned system prompt templates
   io/
     load.py       Reads client profile and transcript from input/
@@ -62,10 +58,11 @@ input/
 ## How it works
 
 1. The agent reads a client profile and transcript.
-2. A system prompt (with the current profile embedded as JSON) is sent to a local Ollama model.
-3. The model returns a `ChangeLog`: a list of records to **create** and field values to **update**.
-4. `merger.py` applies the changelog to the profile immutably, producing the updated state.
-5. Both the changelog and updated profile are persisted to `output/`.
+2. A system prompt (with the current profile and output schema embedded as JSON) is sent to a local Ollama model.
+3. The model returns a `ChangeLog`: a list of records to **create** and field values to **update**. Every item carries an `evidence` field quoting the transcript passage that supports the change.
+4. A chain of validators runs against the changelog before it is accepted. Each validator is an independent, composable check — new ones can be added to `llm/validators/` without touching the rest of the pipeline. Any failure triggers a retry (up to 3 attempts via tenacity).
+5. `merger.py` applies the changelog to the profile immutably, producing the updated state.
+6. Both the changelog and updated profile are persisted to `output/`.
 
 ## Design simplifications
 
