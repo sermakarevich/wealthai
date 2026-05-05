@@ -7,11 +7,17 @@ from typing import Any
 
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_ollama import ChatOllama
+from pydantic import ValidationError
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from wealthai.config import LLM_RETRY_ATTEMPTS, LLM_RETRY_MAX_WAIT, LLM_RETRY_MIN_WAIT, MODEL, PROMPT_VERSION
 from wealthai.llm.validators import validate
 from wealthai.schemas import ChangeLog, ClientProfile
+
+
+class ChangeLogValidationError(Exception):
+    """LLM returned a structurally valid ChangeLog that failed semantic validation."""
+
 
 _PROMPTS_DIR = Path(__file__).parent / "prompts"
 
@@ -22,7 +28,7 @@ def _build_llm() -> Any:
 
 
 @retry(
-    retry=retry_if_exception_type(Exception),
+    retry=retry_if_exception_type((ValidationError, ChangeLogValidationError)),
     stop=stop_after_attempt(LLM_RETRY_ATTEMPTS),
     wait=wait_exponential(multiplier=1, min=LLM_RETRY_MIN_WAIT, max=LLM_RETRY_MAX_WAIT),
     reraise=True,
@@ -32,10 +38,10 @@ async def _invoke_llm(system_prompt: str, transcript: str, profile: ClientProfil
     messages = [SystemMessage(content=system_prompt), HumanMessage(content=transcript)]
     result = await llm.ainvoke(messages)
     if not isinstance(result, ChangeLog):
-        raise ValueError(f"LLM returned unexpected type: {type(result)}")
+        raise ChangeLogValidationError(f"LLM returned unexpected type: {type(result)}")
     validation = validate(result, profile)
     if not validation.valid:
-        raise ValueError(f"ChangeLog failed validation: {validation.errors}")
+        raise ChangeLogValidationError(f"ChangeLog failed validation: {validation.errors}")
     return result
 
 

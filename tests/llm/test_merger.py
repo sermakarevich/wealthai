@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pytest
+from pydantic import ValidationError
 
 from wealthai.llm.merger import apply_changelog
 from wealthai.schemas import (
@@ -139,3 +140,64 @@ def test_update_personal_detail_nested_address(james: ClientProfile):
 def test_empty_changelog_returns_equivalent_profile(james: ClientProfile):
     result = apply_changelog(james, ChangeLog())
     assert result.model_dump() == james.model_dump()
+
+
+# ---------------------------------------------------------------------------
+# patch validation: unknown fields and bad types must raise
+# ---------------------------------------------------------------------------
+
+
+def test_unknown_personal_detail_field_raises(james: ClientProfile):
+    changelog = ChangeLog(
+        update=UpdateSet(
+            personal_details=[PersonalDetailUpdate(field="middle_name", old_value=None, new_value="X", evidence="...")]
+        )
+    )
+    with pytest.raises(ValueError, match="middle_name"):
+        apply_changelog(james, changelog)
+
+
+def test_unknown_address_subfield_raises(james: ClientProfile):
+    changelog = ChangeLog(
+        update=UpdateSet(
+            personal_details=[
+                PersonalDetailUpdate(field="address.zip_code", old_value=None, new_value="12345", evidence="...")
+            ]
+        )
+    )
+    with pytest.raises(ValueError, match="zip_code"):
+        apply_changelog(james, changelog)
+
+
+def test_unknown_asset_field_raises(james: ClientProfile):
+    changelog = ChangeLog(
+        update=UpdateSet(
+            assets=[RecordUpdate(id="asset-001", field="bogus", old_value=None, new_value=1, evidence="...")]
+        )
+    )
+    with pytest.raises(ValueError, match="bogus"):
+        apply_changelog(james, changelog)
+
+
+def test_bad_type_on_asset_value_raises(james: ClientProfile):
+    changelog = ChangeLog(
+        update=UpdateSet(
+            assets=[
+                RecordUpdate(id="asset-001", field="value", old_value=87000, new_value="not a number", evidence="...")
+            ]
+        )
+    )
+    with pytest.raises(ValidationError):
+        apply_changelog(james, changelog)
+
+
+def test_int_coerced_to_float_on_asset_value(james: ClientProfile):
+    changelog = ChangeLog(
+        update=UpdateSet(
+            assets=[RecordUpdate(id="asset-001", field="value", old_value=87000, new_value=95000, evidence="...")]
+        )
+    )
+    result = apply_changelog(james, changelog)
+    updated = next(a for a in result.assets if a.id == "asset-001")
+    assert updated.value == 95000.0
+    assert isinstance(updated.value, float)

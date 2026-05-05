@@ -24,16 +24,42 @@ def _next_id(prefix: str, existing: list[str]) -> str:
     return f"{prefix}-{(max(nums, default=0) + 1):03d}"
 
 
+def _validate_field_path(model_cls: type[BaseModel], path: str) -> None:
+    head, _, tail = path.partition(".")
+    if head not in model_cls.model_fields:
+        raise ValueError(f"Unknown field {path!r} on {model_cls.__name__}")
+    if not tail:
+        return
+    nested = model_cls.model_fields[head].annotation
+    if not (isinstance(nested, type) and issubclass(nested, BaseModel)):
+        raise ValueError(f"Field {head!r} on {model_cls.__name__} is not a nested model; cannot resolve {path!r}")
+    _validate_field_path(nested, tail)
+
+
 def _patch_personal(details: PersonalDetails, upd: PersonalDetailUpdate) -> PersonalDetails:
-    parts = upd.field.split(".", 1)
-    if parts[0] == "address" and len(parts) == 2:
-        new_addr = details.address.model_copy(update={parts[1]: upd.new_value})
-        return details.model_copy(update={"address": new_addr})
-    return details.model_copy(update={upd.field: upd.new_value})
+    _validate_field_path(PersonalDetails, upd.field)
+    data = details.model_dump(mode="python")
+    head, _, tail = upd.field.partition(".")
+    if tail:
+        data[head][tail] = upd.new_value
+    else:
+        data[head] = upd.new_value
+    return PersonalDetails.model_validate(data)
 
 
 def _patch_by_id[T: BaseModel](records: list[T], upd: RecordUpdate) -> list[T]:
-    return [r.model_copy(update={upd.field: upd.new_value}) if getattr(r, "id") == upd.id else r for r in records]
+    out: list[T] = []
+    for record in records:
+        if getattr(record, "id") != upd.id:
+            out.append(record)
+            continue
+        cls = type(record)
+        if upd.field not in cls.model_fields:
+            raise ValueError(f"Unknown field {upd.field!r} on {cls.__name__}")
+        data = record.model_dump(mode="python")
+        data[upd.field] = upd.new_value
+        out.append(cls.model_validate(data))
+    return out
 
 
 def apply_changelog(profile: ClientProfile, changelog: ChangeLog) -> ClientProfile:

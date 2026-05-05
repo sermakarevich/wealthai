@@ -4,11 +4,17 @@ default:
 install:
     uv sync --all-extras
 
-run client_id:
-    uv run run.py {{client_id}}
+run +client_ids:
+    uv run run.py {{client_ids}}
 
-eval +client_ids:
+run-all:
+    uv run run.py client-001 client-002
+
+evals +client_ids:
     uv run run_evals.py {{client_ids}}
+
+evals-all:
+    uv run run_evals.py client-001 client-002
 
 # --- code quality ---
 

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import argparse
 
-from wealthai.evals import run_eval
+from wealthai.logging import configure
 
 
 def _parse_args() -> argparse.Namespace:
@@ -12,6 +12,10 @@ def _parse_args() -> argparse.Namespace:
 
 
 if __name__ == "__main__":
+    configure()
+
+    from wealthai.evals import run_evals
+
     args = _parse_args()
     for client_id in args.client_ids:
-        run_eval(client_id)
+        run_evals(client_id)
