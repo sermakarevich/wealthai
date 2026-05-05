@@ -14,11 +14,11 @@ uv sync --all-extras   # or: just install
 ## Usage
 
 ```bash
-# Run the agent for a client
-just run client-001
+# Run the agent for all clients
+just run-all
 
-# Evaluate against expected output
-just evals client-001
+# Evaluate against expected output for all clients
+just evals-all
 
 # Run tests / lint
 just test
