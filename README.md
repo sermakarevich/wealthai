@@ -5,6 +5,9 @@ Extracts client profile changes from financial planning meeting transcripts usin
 ## Setup
 
 ```bash
+# Install uv: https://docs.astral.sh/uv/getting-started/installation/
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Install Ollama: https://ollama.com
 ollama pull gemma4:latest
 
